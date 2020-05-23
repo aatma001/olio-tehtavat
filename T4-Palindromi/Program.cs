@@ -8,18 +8,17 @@ namespace T4_Palindromi
         static void Main(string[] args)
         {
             Console.WriteLine("Anna merkkijono");
-            string merkkijono = Console.ReadLine();
-            string merkkijonoLowerCase = merkkijono.ToLower();
+            string merkkijonoLowerCase = Console.ReadLine().ToLower();
             char[] testattava = merkkijonoLowerCase.ToCharArray();
             char[] käännetty = stringKääntäjä(merkkijonoLowerCase);
 
             if (käännetty.SequenceEqual(testattava))
             {
-                Console.WriteLine(merkkijono + " on palindromi");
+                Console.WriteLine(merkkijonoLowerCase + " on palindromi");
             }
             else
             {
-                Console.WriteLine(merkkijono + " ei ole palindromi, sana väärinpäin on " + new string(käännetty));
+                Console.WriteLine(merkkijonoLowerCase + " ei ole palindromi, sana väärinpäin on " + new string(käännetty));
             }
         }
         static char[] stringKääntäjä(string merkkijono)
