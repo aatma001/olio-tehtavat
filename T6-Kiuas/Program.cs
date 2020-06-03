@@ -71,13 +71,13 @@ namespace T6_Kiuas
             Console.WriteLine(kiuas.IsOnOff());
         }
 
-                static int AskTemperature()
+                static int AskTemperature ()
             {
                 Console.WriteLine("Set temperature of the sauna");
                 int temperature = int.Parse(Console.ReadLine());
                 return temperature;
             }
-            static int AskMoisture()
+            static int AskMoisture ()
             {
                 Console.WriteLine("Set moisture of the sauna");
                 int moisture = int.Parse(Console.ReadLine());

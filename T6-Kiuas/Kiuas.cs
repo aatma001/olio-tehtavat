@@ -15,14 +15,14 @@ namespace T6_Kiuas
         public int moisture{ get; set; }
         public bool isOn { get; set; }
 
-        public Kiuas(int _temperature, int _moisture, bool _isOn)
+        public Kiuas (int _temperature, int _moisture, bool _isOn)
         {
             temperature = _temperature;
             moisture = _moisture;
             isOn = _isOn;
         }
 
-        public string IsOnOff()
+        public string IsOnOff ()
         {
             if (isOn)
             {
@@ -34,12 +34,12 @@ namespace T6_Kiuas
             }
         }
 
-        public string CheckStatus()
+        public string CheckStatus ()
         {
             return "Temperature: " + temperature.ToString() + " Moisture: " + moisture.ToString() + "\n";
         }
 
-        public bool ChangeTemperature(int newTemperature)
+        public bool ChangeTemperature (int newTemperature)
         {
             if (newTemperature <= maxTemperature)
             {
@@ -52,7 +52,7 @@ namespace T6_Kiuas
             }
         }
 
-        public bool ChangeMoisture(int newMoisture)
+        public bool ChangeMoisture (int newMoisture)
         {
             if (newMoisture <= maxMoisture)
             {
