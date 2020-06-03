@@ -10,7 +10,7 @@ namespace T4_Palindromi
             Console.WriteLine("Anna merkkijono");
             string merkkijonoLowerCase = Console.ReadLine().ToLower();
             char[] testattava = merkkijonoLowerCase.ToCharArray();
-            char[] käännetty = stringKääntäjä(merkkijonoLowerCase);
+            char[] käännetty = KäännäString(merkkijonoLowerCase);
 
             if (käännetty.SequenceEqual(testattava))
             {
@@ -21,7 +21,7 @@ namespace T4_Palindromi
                 Console.WriteLine(merkkijonoLowerCase + " ei ole palindromi, sana väärinpäin on " + new string(käännetty));
             }
         }
-        static char[] stringKääntäjä(string merkkijono)
+        static char[] KäännäString (string merkkijono)
         {
             char[] käännettävä = merkkijono.ToCharArray();
             Array.Reverse(käännettävä);
