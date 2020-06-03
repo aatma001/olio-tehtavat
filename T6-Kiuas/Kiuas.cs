@@ -9,71 +9,60 @@ namespace T6_Kiuas
 {
     class Kiuas
     {
-        const int maxTemperature = 120;
-        const int maxMoisture = 100;
-        public bool isOn;
-        private int temperature;
-        private int moisture;
-        private int newTemperature;
-        private int newMoisture;
-        public Kiuas(int _temperature, int _moisture)
+        private const int maxMoisture = 100;
+        private const int maxTemperature = 120;
+        public int temperature{ get; set; }
+        public int moisture{ get; set; }
+        public bool isOn { get; set; }
+
+        public Kiuas(int _temperature, int _moisture, bool _isOn)
         {
             temperature = _temperature;
             moisture = _moisture;
-        }
-         public void TurnOn()
-        {
-            isOn = true;
-            Console.WriteLine("Sauna is on.");
-
-        }
-        public void TurnOff()
-        {
-            Console.WriteLine("Sauna is off");
-            isOn = false;
+            isOn = _isOn;
         }
 
-        public void ChangeTemperature()
+        public string IsOnOff()
         {
-            while (true)
+            if (isOn)
             {
-                Console.WriteLine("Give new temperature");
-                newTemperature = int.Parse(Console.ReadLine());
-                if (newTemperature <= maxTemperature)
-                {
-                    Console.WriteLine("Temperature changed.\n");
-                    temperature = newTemperature;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Give value between 0-120");
-                    continue;
-                }
+                return "sauna is on.";
+            }
+            else
+            {
+                return "sauna is off";
             }
         }
-        public void ChangeMoisture()
+
+        public string CheckStatus()
         {
-            while (true)
+            return "Temperature: " + temperature.ToString() + " Moisture: " + moisture.ToString() + "\n";
+        }
+
+        public bool ChangeTemperature(int newTemperature)
+        {
+            if (newTemperature <= maxTemperature)
             {
-                Console.WriteLine("Give new moisture");
-                newMoisture = int.Parse(Console.ReadLine());
-                if (newMoisture <= maxMoisture)
-                {
-                    Console.WriteLine("Moisture changed\n");
-                    moisture = newMoisture;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("give value between 0-100");
-                    continue;
-                }
+                temperature = newTemperature;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
-        public void CheckStatus()
+
+        public bool ChangeMoisture(int newMoisture)
         {
-            Console.WriteLine("Temperature: {0} Moisture: {1}", temperature, moisture);
+            if (newMoisture <= maxMoisture)
+            {
+                moisture = newMoisture;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

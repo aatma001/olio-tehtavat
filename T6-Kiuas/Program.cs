@@ -1,22 +1,22 @@
 ﻿using System;
+using System.Data.SqlClient;
+using System.Net;
+using System.Reflection;
 
 namespace T6_Kiuas
 {
     class Program
     {
-
+        
         static void Main(string[] args)
         {
+            
             bool on = true;
-            Console.WriteLine("Set temperature of the sauna");
-            int temperature = int.Parse(Console.ReadLine());
-            Console.WriteLine("Set moisture of the sauna");
-            int moisture = int.Parse(Console.ReadLine());
+            bool ison = true;
 
-            Kiuas kiuas = new Kiuas(temperature, moisture);
-            kiuas.TurnOn();
-            kiuas.CheckStatus();
-
+            Kiuas kiuas = new Kiuas(AskTemperature(), AskMoisture(), true);
+            kiuas.IsOnOff();
+            Console.WriteLine(kiuas.CheckStatus());
 
             while (on)
             {
@@ -25,21 +25,65 @@ namespace T6_Kiuas
                 switch (action)
                 {
                     case 1:
-                        kiuas.ChangeTemperature();
-                        kiuas.CheckStatus();
+                        while (true)
+                        {
+                            if (kiuas.ChangeTemperature(AskTemperature()))
+                            {
+                                Console.WriteLine("Temperature changed");
+                                Console.WriteLine(kiuas.CheckStatus());
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Too hot or too cold");
+                                continue;
+                            }
+                        }
                         break;
 
                     case 2:
-                        kiuas.ChangeMoisture();
-                        kiuas.CheckStatus();
+                        while (true)
+                        {
+                            if (kiuas.ChangeMoisture(AskMoisture()))
+                            {
+                                Console.WriteLine("Moisture changed");
+                                Console.WriteLine(kiuas.CheckStatus());
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Give value between 0-100");
+                                continue;
+                            }
+                        }
                         break;
 
                     case 3:
-                        kiuas.TurnOff();
                         on = false;
+                        kiuas.isOn = false;
                         break;
-                } 
+
+                    default:
+                        Console.WriteLine("Give value between 1-3");
+                        break;  
+                }
             }
-        }   
+            Console.WriteLine(kiuas.IsOnOff());
+        }
+
+                static int AskTemperature()
+            {
+                Console.WriteLine("Set temperature of the sauna");
+                int temperature = int.Parse(Console.ReadLine());
+                return temperature;
+            }
+            static int AskMoisture()
+            {
+                Console.WriteLine("Set moisture of the sauna");
+                int moisture = int.Parse(Console.ReadLine());
+                return moisture;
+            }
     }
 }
+
+
