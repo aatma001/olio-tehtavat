@@ -11,13 +11,11 @@ namespace T6_Kiuas
         static void Main(string[] args)
         {
             
-            bool on = true;
-            bool ison = true;
-
             Kiuas kiuas = new Kiuas(AskTemperature(), AskMoisture(), true);
-            kiuas.IsOnOff();
+            Console.WriteLine(kiuas.IsOnOff());
             Console.WriteLine(kiuas.CheckStatus());
 
+            bool on = true;
             while (on)
             {
                 Console.WriteLine("Adjust temperature with 1, moisture with 2, and turn the sauna off with 3");
