@@ -58,7 +58,7 @@ namespace T6_Kiuas
 
                     case 3:
                         on = false;
-                        kiuas.isOn = false;
+                        kiuas.IsOn = false;
                         break;
 
                     default:

@@ -11,20 +11,20 @@ namespace T6_Kiuas
     {
         private const int maxMoisture = 100;
         private const int maxTemperature = 120;
-        public int temperature{ get; set; }
-        public int moisture{ get; set; }
-        public bool isOn { get; set; }
+        public int Temperature{ get; set; }
+        public int Moisture{ get; set; }
+        public bool IsOn { get; set; }
 
         public Kiuas (int _temperature, int _moisture, bool _isOn)
-        {
-            temperature = _temperature;
-            moisture = _moisture;
-            isOn = _isOn;
+        { 
+            Temperature = _temperature;
+            Moisture = _moisture;
+            IsOn = _isOn;
         }
 
         public string IsOnOff ()
         {
-            if (isOn)
+            if (IsOn)
             {
                 return "sauna is on.";
             }
@@ -36,14 +36,14 @@ namespace T6_Kiuas
 
         public string CheckStatus ()
         {
-            return "Temperature: " + temperature.ToString() + " Moisture: " + moisture.ToString() + "\n";
+            return "Temperature: " + Temperature.ToString() + " Moisture: " + Moisture.ToString() + "\n";
         }
 
         public bool ChangeTemperature (int newTemperature)
         {
             if (newTemperature <= maxTemperature)
             {
-                temperature = newTemperature;
+                Temperature = newTemperature;
                 return true;
             }
             else
@@ -56,7 +56,7 @@ namespace T6_Kiuas
         {
             if (newMoisture <= maxMoisture)
             {
-                moisture = newMoisture;
+                Moisture = newMoisture;
                 return true;
             }
             else
