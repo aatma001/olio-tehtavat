@@ -12,35 +12,33 @@ namespace T25_Jono
             while (true)
             {
                 Console.WriteLine("Anna jonoon tulevan asiakkaan nimi," +
-                    " käsittele asiakas painamalla p");
+                    " (enter lopettaa)");
 
                 string nimi = Console.ReadLine();
-                if (nimi != "" && nimi != "p")
+                if (nimi != "")
                 {
                     queue.GoToLine(nimi);
                 }
-                else if(nimi == "p")
-                {
-                    Console.WriteLine(queue.LeaveLine());
-                    
-                }
                 else
                 {
-                    Console.WriteLine("Kauppa kiinni, menkää kotionne");
                     break;
                 }
-                
-                Console.WriteLine("Asiakkaita jonossa: " + queue.CheckLenght());
-                CheckLine(queue.CashierQueue);
                 Console.WriteLine();
+                Console.WriteLine("Jonossa " + queue.CheckLenght() + " asiakasta");
+                PrintLine(queue.CashierQueue);
             }
 
-            static void CheckLine(Queue<string> cashierQueue)
+            for(int i = 0; i < queue.Lenght; i++)
             {
-                foreach (string name in cashierQueue)
-                {
-                    Console.WriteLine(name);
-                }
+                Console.WriteLine(queue.LeaveLine());
+            }
+
+        }
+        static void PrintLine(Queue<string> cashierQueue)
+        {
+            foreach(string name in cashierQueue)
+            {
+                Console.WriteLine(name);
             }
         }
     }
