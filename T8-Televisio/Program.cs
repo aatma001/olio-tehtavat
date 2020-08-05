@@ -21,13 +21,13 @@ namespace T8_Televisio
                 switch (action)
                 {
                     case 1:
-                        television.ChangeChannel(AskChannel());
+                        television.Channel = AskChannel();
                         Console.WriteLine(television.CheckStatus());
                         break;
                         
 
                     case 2:
-                        television.ChangeVolume(AskVolume());
+                        television.Volume = AskVolume();
                         Console.WriteLine(television.CheckStatus());
                         break;
                         

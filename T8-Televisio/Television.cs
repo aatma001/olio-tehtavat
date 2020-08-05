@@ -6,21 +6,41 @@ namespace T8_Televisio
 {
     class Television
     {
-        public int Volume { get; set; }
-        public int Channel { get; set; }  
-        public string ShowChannel { get; set; }
+        private int volume { get; set; }
+        private int channel { get; set; }  
+
         public bool IsOn { get; set; }
         public Dictionary<int, string> Channels { get; set; }
-        private const int maxVolume = 99;
-        private const int minVolume = 0;
 
-        
-
-        public Television(int _volume, int _channel, bool _isOn)
+        public int Volume
         {
-            Volume = _volume;
-            Channel = _channel;
-            IsOn = _isOn;
+            get { return volume; }
+            set
+            {
+                if ((value > 0) && (value < 100))
+                {
+                    volume = value;
+                }
+            }
+        }
+        public int Channel
+        {
+            get { return channel; }
+            set
+            {
+                if ((value > 0) && (value < 7))
+                {
+                    channel = value;
+                }
+            }
+        }
+
+
+        public Television(int volume, int channel, bool isOn)
+        {
+            Volume = volume;
+            Channel = channel;
+            IsOn = isOn;
         }
 
         public string IsOnOff()
@@ -32,26 +52,6 @@ namespace T8_Televisio
             else
             {
                 return "Tv is Off.";
-            }
-        }
-
-        public bool ChangeChannel(int _channel)
-        {
-            
-            Channel = _channel;
-            return true;
-        }
-
-        public bool ChangeVolume(int _volume)
-        {
-            if(_volume <= maxVolume && _volume >= minVolume)
-            {
-                Volume = _volume;
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
 
